@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Auction</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="str_sign_in">Sign in</string>
+    <string name="str_sign_up">Sign up</string>
+    <string name="str_password">Password</string>
+    <string name="str_confirm_password">Confirm Password</string>
+    <string name="str_password_mismatch">Password mismatch</string>
+    <string name="str_first_name">First Name</string>
+    <string name="str_last_name">Last Name</string>
+    <string name="str_display_name">Display Name</string>
+    <string name="str_havent_account">Don\'t have an account yet?</string>
+    <string name="str_already_signed">Already Signed Up?</string>
+    <string name="str_exit_title">"Leave the Page"</string>
+    <string name="str_are_you_sure">Are you sure?</string>
+    <string name="str_confirm">OK</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_closed">Closed</string>
+    <string name="str_winner">Winner</string>
+    <string name="str_logged_In_successfully">Logged in successfully</string>
+    <string name="str_invalid_account">Invalid account</string>
+    <string name="error_sign_up_failed">An error occured during sign up process</string>
+    <string name="str_welcome">Welcome </string>
+    <!-- Start Month Names -->
+    <string name="str_jan">January</string>
+    <string name="str_feb">Febrauary</string>
+    <string name="str_mar">March</string>
+    <string name="str_april">April</string>
+    <string name="str_may">May</string>
+    <string name="str_june">June</string>
+    <string name="str_july">July</string>
+    <string name="str_aug">August</string>
+    <string name="str_sep">September</string>
+    <string name="str_oct">October</string>
+    <string name="str_nov">November</string>
+    <string name="str_dec">December</string>
+
+    <!-- End Month Names -->
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_registeration">Sign up</string>
+    <string name="error_required_field">Required</string>
+
+</resources>
