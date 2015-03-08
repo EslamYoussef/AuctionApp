@@ -26,6 +26,14 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name=".AddAuctionActivity"
+            android:label="@string/title_activity_add_auction" >
+        </activity>
+        <activity
+            android:name=".AuctionDetailsActivity"
+            android:label="@string/title_activity_auction_details" >
+        </activity>
     </application>
 
 </manifest>

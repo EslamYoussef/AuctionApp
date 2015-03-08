@@ -6,6 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="str_sign_in">Sign in</string>
+    <string name="str_add_bid">Add Bid</string>
+    <string name="str_show_all_bids">Show All Bids</string>
     <string name="str_sign_up">Sign up</string>
     <string name="str_password">Password</string>
     <string name="str_confirm_password">Confirm Password</string>
@@ -21,10 +23,16 @@
     <string name="str_cancel">Cancel</string>
     <string name="str_closed">Closed</string>
     <string name="str_winner">Winner</string>
+    <string name="str_item_title">Item Title</string>
+    <string name="str_item_description">Item Description</string>
+    <string name="str_start_date">Start Date</string>
     <string name="str_logged_In_successfully">Logged in successfully</string>
     <string name="str_invalid_account">Invalid account</string>
     <string name="error_sign_up_failed">An error occured during sign up process</string>
     <string name="str_welcome">Welcome </string>
+    <string name="str_save">Save</string>
+    <string name="str_added_successfully">Added Successfully</string>
+    <string name="str_auction_added_failure">An error occured during adding operation</string>
     <!-- Start Month Names -->
     <string name="str_jan">January</string>
     <string name="str_feb">Febrauary</string>
@@ -43,5 +51,7 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_registeration">Sign up</string>
     <string name="error_required_field">Required</string>
+    <string name="title_activity_add_auction">AddAuctionActivity</string>
+    <string name="title_activity_auction_details">AuctionDetailsActivity</string>
 
 </resources>

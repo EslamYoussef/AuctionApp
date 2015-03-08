@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.01"
-            android:background="@android:color/holo_green_dark" />
+            android:background="@android:color/holo_green_light" />
 
         <Button
             android:id="@+id/bRegister"
