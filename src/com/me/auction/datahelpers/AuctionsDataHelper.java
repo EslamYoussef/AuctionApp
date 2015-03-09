@@ -31,8 +31,8 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 	}
 
 	private void createAuctionsTable(SQLiteDatabase db) {
-		String tbl = "create table " + Constants.TABLE_ITEMS + " ("
-				+ Constants.KEY_ID + " integer primary key autoincrement,"
+		String tbl = "create table " + Constants.TABLE_AUCTIONS + " ("
+				+ Constants.KEY_ID + " integer primary key autoincrement, "
 				+ Constants.KEY_ITEM_TITLE + " text not null, "
 				+ Constants.KEY_OWNER_USER_NAME + " text not null, "
 				+ Constants.KEY_ITEM_DESCRIPTION + " text, "
@@ -58,6 +58,7 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 		values.put(Constants.KEY_START_DATE, auction.getStartDate());
 		values.put(Constants.KEY_DURATION, auction.getDurationInHours());
 		values.put(Constants.KEY_OWNER_ID, auction.getItemOwnerId());
+		values.put(Constants.KEY_OWNER_USER_NAME, auction.getItemOwnerName());
 
 		try {
 			id = db.insert(Constants.TABLE_AUCTIONS, null, values);

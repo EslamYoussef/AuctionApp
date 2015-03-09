@@ -1,10 +1,17 @@
 package com.me.auction.datahelpers;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.me.auction.model.Auction;
+import com.me.auction.model.User;
+import com.me.auction.presenters.AuctionPresenter;
+import com.me.auction.presenters.UserPresenter;
 import com.me.auction.utils.Constants;
 
 public class MainDataHelper extends SQLiteOpenHelper {
@@ -26,8 +33,31 @@ public class MainDataHelper extends SQLiteOpenHelper {
 	}
 
 	private void fillInitialData() {
-		// TODO Auto-generated method stub
-
+		// Create User
+		User user = new User();
+		user.setfName("Eslam");
+		user.setlName("Eslam");
+		user.setDisplayName("Eslam");
+		user.setPassword("12345");
+		UserPresenter mPresnter = new UserPresenter(mContext);
+		Long id = mPresnter.register(user);
+		// Create Auction
+		Auction auction = new Auction();
+		auction.setIsClosed(0);
+		auction.setItemDescription("Description");
+		auction.setItemOwnerId((long) 1);
+		auction.setItemOwnerName("Eslam");
+		auction.setItemTitle("Item 1");
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.MONTH, 5);
+		auction.setStartDate(cal.getTimeInMillis());
+		auction.setDurationInHours(2);
+		AuctionPresenter mAuctionPresnter = new AuctionPresenter(mContext);
+		Long auctionId = mAuctionPresnter.createAuction(auction);
+		ArrayList<Auction> auctionsList = mAuctionPresnter.getAllAuctions();
+		auctionsList = mAuctionPresnter.getHapeeningNowAuctions();
+		auctionsList = mAuctionPresnter.getUpComingAuctions();
+		auctionsList = mAuctionPresnter.getUserAuctions((long) 1);
 	}
 
 	@Override
@@ -54,8 +84,8 @@ public class MainDataHelper extends SQLiteOpenHelper {
 	}
 
 	private void createAuctionsTable(SQLiteDatabase db) {
-		String tbl = "create table " + Constants.TABLE_ITEMS + " ("
-				+ Constants.KEY_ID + " integer primary key autoincrement,"
+		String tbl = "create table " + Constants.TABLE_AUCTIONS + " ("
+				+ Constants.KEY_ID + " integer primary key autoincrement, "
 				+ Constants.KEY_ITEM_TITLE + " text not null, "
 				+ Constants.KEY_OWNER_USER_NAME + " text not null, "
 				+ Constants.KEY_ITEM_DESCRIPTION + " text, "

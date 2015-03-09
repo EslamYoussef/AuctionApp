@@ -10,7 +10,9 @@ public class UserPresenter {
 	Context mContext;
 
 	public UserPresenter(Context context) {
+
 		mContext = context;
+		mUsersDataHelper = new UsersDataHelper(mContext);
 	}
 
 	public long register(User user) {

@@ -9,6 +9,7 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:name=".AuctionApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -34,6 +35,8 @@
             android:name=".AuctionDetailsActivity"
             android:label="@string/title_activity_auction_details" >
         </activity>
+        <activity android:name="LoginActivity"></activity>
+        <activity android:name="RegisterationActivity"></activity>
     </application>
 
 </manifest>
