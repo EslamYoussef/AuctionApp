@@ -33,6 +33,7 @@
     <string name="str_save">Save</string>
     <string name="str_added_successfully">Added Successfully</string>
     <string name="str_auction_added_failure">An error occured during adding operation</string>
+    <string name="str_loading">Loading...</string>
     <!-- Start Month Names -->
     <string name="str_jan">January</string>
     <string name="str_feb">Febrauary</string>
@@ -46,8 +47,40 @@
     <string name="str_oct">October</string>
     <string name="str_nov">November</string>
     <string name="str_dec">December</string>
+    <!-- Nav Drawer Titles -->
+    <string-array name="nav_drawer_items">
 
+        <!-- Nav Drawer Menu Items -->
+        <item>"Auctions"</item>
+        <!-- Nav Drawer Menu Items -->
+        <item>Statistics</item>
+        <!-- Nav Drawer Menu Items -->
+        <item>Profile</item>
+        <!-- Nav Drawer Menu Items -->
+        <item>Logout</item>
+    </string-array>
+    <!-- END NAVDRAWER TITLES -->
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
     <!-- End Month Names -->
+    <!-- EVENTS SWIPE TITLES -->
+    <string-array name="events_swipe_titles">
+
+        <!-- Nav Drawer Menu Items -->
+        <item>"All"</item>
+        <item>Won Auctions</item>
+        <item>Age Group</item>
+        <item>My Auctions</item>
+    </string-array>
+    <!-- END EVENTS SWIPE TITLES -->
     <string name="title_activity_login">Login</string>
     <string name="title_activity_registeration">Sign up</string>
     <string name="error_required_field">Required</string>

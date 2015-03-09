@@ -8,6 +8,22 @@
 package com.me.auction;
 
 public final class R {
+    public static final class array {
+        /**  End Month Names 
+ EVENTS SWIPE TITLES 
+         */
+        public static final int events_swipe_titles=0x7f060002;
+        /**  END NAVDRAWER TITLES 
+ Nav Drawer List Item Icons 
+ Keep them in order as the titles are in 
+ Nav Drawer List Item Icons 
+ Keep them in order as the titles are in 
+         */
+        public static final int nav_drawer_icons=0x7f060001;
+        /**  Nav Drawer Titles 
+         */
+        public static final int nav_drawer_items=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -22,47 +38,54 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int shape_green_rounded_rectangle=0x7f020001;
+        public static final int ic_drawer=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int list_selector=0x7f020002;
+        public static final int shape_green_rounded_rectangle=0x7f020003;
     }
     public static final class id {
-        public static final int action_save=0x7f080023;
-        public static final int action_settings=0x7f080024;
-        public static final int bAddBid=0x7f080009;
-        public static final int bLogin=0x7f08000f;
-        public static final int bRegister=0x7f08000a;
-        public static final int etConfirmPassword_Reg=0x7f080017;
-        public static final int etDisplayName_Reg=0x7f080015;
-        public static final int etFirstName_Reg=0x7f080013;
-        public static final int etItemDescription=0x7f080001;
-        public static final int etItemTitle=0x7f080000;
-        public static final int etLastName_Reg=0x7f080014;
-        public static final int etPassword_Login=0x7f08000e;
-        public static final int etPassword_Reg=0x7f080016;
-        public static final int etUserName_Login=0x7f08000d;
-        public static final int imageView1=0x7f08000b;
-        public static final int ivImage=0x7f080022;
-        public static final int llReg_Buttons=0x7f08001a;
-        public static final int llSignin=0x7f080010;
-        public static final int lltop=0x7f08000c;
-        public static final int textView2=0x7f080011;
-        public static final int tvAuctionStartDate=0x7f080004;
-        public static final int tvAuctionStartDate_label=0x7f080003;
-        public static final int tvBidDate=0x7f080020;
-        public static final int tvBidUserName=0x7f08001e;
-        public static final int tvBidValue=0x7f08001f;
-        public static final int tvIsClosed=0x7f08001d;
-        public static final int tvIsWinner=0x7f080021;
-        public static final int tvItemDescription=0x7f080008;
-        public static final int tvItemDescription_label=0x7f080007;
-        public static final int tvItemOwner=0x7f08001b;
-        public static final int tvItemTitle=0x7f080006;
-        public static final int tvItemTitle_label=0x7f080005;
-        public static final int tvSignin=0x7f080018;
-        public static final int tvSignup=0x7f080012;
-        public static final int tvStartDate=0x7f08001c;
-        public static final int view5=0x7f080002;
-        public static final int vpWelcomeImages=0x7f080019;
+        public static final int action_save=0x7f090028;
+        public static final int action_settings=0x7f090029;
+        public static final int bAddBid=0x7f090009;
+        public static final int bLogin=0x7f09000f;
+        public static final int bRegister=0x7f09000a;
+        public static final int drawer_layout=0x7f090013;
+        public static final int etConfirmPassword_Reg=0x7f09001a;
+        public static final int etDisplayName_Reg=0x7f090018;
+        public static final int etFirstName_Reg=0x7f090016;
+        public static final int etItemDescription=0x7f090001;
+        public static final int etItemTitle=0x7f090000;
+        public static final int etLastName_Reg=0x7f090017;
+        public static final int etPassword_Login=0x7f09000e;
+        public static final int etPassword_Reg=0x7f090019;
+        public static final int etUserName_Login=0x7f09000d;
+        public static final int frame_container=0x7f090014;
+        public static final int imageView1=0x7f09000b;
+        public static final int ivImage=0x7f090025;
+        public static final int list_slidermenu=0x7f090015;
+        public static final int llReg_Buttons=0x7f09001d;
+        public static final int llSignin=0x7f090010;
+        public static final int lltop=0x7f09000c;
+        public static final int pager=0x7f090027;
+        public static final int textView2=0x7f090011;
+        public static final int tvAuctionStartDate=0x7f090004;
+        public static final int tvAuctionStartDate_label=0x7f090003;
+        public static final int tvBidDate=0x7f090023;
+        public static final int tvBidUserName=0x7f090021;
+        public static final int tvBidValue=0x7f090022;
+        public static final int tvIsClosed=0x7f090020;
+        public static final int tvIsWinner=0x7f090024;
+        public static final int tvItemDescription=0x7f090008;
+        public static final int tvItemDescription_label=0x7f090007;
+        public static final int tvItemOwner=0x7f09001e;
+        public static final int tvItemTitle=0x7f090006;
+        public static final int tvItemTitle_label=0x7f090005;
+        public static final int tvSignin=0x7f09001b;
+        public static final int tvSignup=0x7f090012;
+        public static final int tvStartDate=0x7f09001f;
+        public static final int tvText=0x7f090026;
+        public static final int view5=0x7f090002;
+        public static final int vpWelcomeImages=0x7f09001c;
     }
     public static final class layout {
         public static final int activity_add_auction=0x7f030000;
@@ -73,34 +96,37 @@ public final class R {
         public static final int activity_welcome=0x7f030005;
         public static final int cell_auction=0x7f030006;
         public static final int cell_bid=0x7f030007;
-        public static final int fragment_image=0x7f030008;
+        public static final int cell_icon_text=0x7f030008;
+        public static final int cell_image_view=0x7f030009;
+        public static final int fragment_auctions=0x7f03000a;
+        public static final int fragment_image=0x7f03000b;
     }
     public static final class menu {
-        public static final int add_auction=0x7f070000;
-        public static final int auction_details=0x7f070001;
-        public static final int main=0x7f070002;
+        public static final int add_auction=0x7f080000;
+        public static final int auction_details=0x7f080001;
+        public static final int main=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
-        public static final int error_required_field=0x7f05002e;
+        public static final int error_required_field=0x7f05002f;
         public static final int error_sign_up_failed=0x7f05001b;
         public static final int hello_world=0x7f050001;
         public static final int str_add_bid=0x7f050005;
         public static final int str_added_successfully=0x7f05001e;
         public static final int str_already_signed=0x7f05000f;
-        public static final int str_april=0x7f050023;
+        public static final int str_april=0x7f050024;
         public static final int str_are_you_sure=0x7f050011;
         public static final int str_auction_added_failure=0x7f05001f;
-        public static final int str_aug=0x7f050027;
+        public static final int str_aug=0x7f050028;
         public static final int str_cancel=0x7f050013;
         public static final int str_closed=0x7f050014;
         public static final int str_confirm=0x7f050012;
         public static final int str_confirm_password=0x7f050009;
-        public static final int str_dec=0x7f05002b;
+        public static final int str_dec=0x7f05002c;
         public static final int str_display_name=0x7f05000d;
         public static final int str_exit_title=0x7f050010;
-        public static final int str_feb=0x7f050021;
+        public static final int str_feb=0x7f050022;
         public static final int str_first_name=0x7f05000b;
         public static final int str_havent_account=0x7f05000e;
         public static final int str_invalid_account=0x7f05001a;
@@ -108,32 +134,33 @@ public final class R {
         public static final int str_item_title=0x7f050016;
         /**  Start Month Names 
          */
-        public static final int str_jan=0x7f050020;
-        public static final int str_july=0x7f050026;
-        public static final int str_june=0x7f050025;
+        public static final int str_jan=0x7f050021;
+        public static final int str_july=0x7f050027;
+        public static final int str_june=0x7f050026;
         public static final int str_last_name=0x7f05000c;
+        public static final int str_loading=0x7f050020;
         public static final int str_logged_In_successfully=0x7f050019;
-        public static final int str_mar=0x7f050022;
-        public static final int str_may=0x7f050024;
-        public static final int str_nov=0x7f05002a;
-        public static final int str_oct=0x7f050029;
+        public static final int str_mar=0x7f050023;
+        public static final int str_may=0x7f050025;
+        public static final int str_nov=0x7f05002b;
+        public static final int str_oct=0x7f05002a;
         public static final int str_password=0x7f050008;
         public static final int str_password_mismatch=0x7f05000a;
         public static final int str_save=0x7f05001d;
-        public static final int str_sep=0x7f050028;
+        public static final int str_sep=0x7f050029;
         public static final int str_show_all_bids=0x7f050006;
         public static final int str_sign_in=0x7f050004;
         public static final int str_sign_up=0x7f050007;
         public static final int str_start_date=0x7f050018;
         public static final int str_welcome=0x7f05001c;
         public static final int str_winner=0x7f050015;
-        public static final int title_activity_add_auction=0x7f05002f;
-        public static final int title_activity_auction_details=0x7f050030;
-        /**  End Month Names 
+        public static final int title_activity_add_auction=0x7f050030;
+        public static final int title_activity_auction_details=0x7f050031;
+        /**  END EVENTS SWIPE TITLES 
          */
-        public static final int title_activity_login=0x7f05002c;
+        public static final int title_activity_login=0x7f05002d;
         public static final int title_activity_main=0x7f050003;
-        public static final int title_activity_registeration=0x7f05002d;
+        public static final int title_activity_registeration=0x7f05002e;
     }
     public static final class style {
         /** 
@@ -157,10 +184,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }
