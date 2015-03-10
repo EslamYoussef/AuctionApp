@@ -201,6 +201,9 @@ public class AuctionDetailsActivity extends ActionBarActivity implements
 			mAuctionPresenter.updateUser(mAuction);
 
 		}
+		//
+		Toast.makeText(this, R.string.str_bids_added_randomly,
+				Toast.LENGTH_LONG).show();
 		fillViews();
 
 	}

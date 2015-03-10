@@ -1932,7 +1932,7 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
         public static final int action_settings=0x7f0a0012;
         public static final int app_name=0x7f0a0010;
-        public static final int error_required_field=0x7f0a0055;
+        public static final int error_required_field=0x7f0a0056;
         public static final int error_sign_up_failed=0x7f0a0031;
         public static final int hello_world=0x7f0a0011;
         public static final int str_add_auction=0x7f0a0034;
@@ -1940,24 +1940,25 @@ containing a value of this type.
         public static final int str_add_dolar_bid_value=0x7f0a003a;
         public static final int str_added_successfully=0x7f0a0035;
         public static final int str_already_signed=0x7f0a0021;
-        public static final int str_april=0x7f0a004a;
+        public static final int str_april=0x7f0a004b;
         public static final int str_are_you_sure=0x7f0a0023;
         public static final int str_auction_added_failure=0x7f0a0036;
         public static final int str_auction_bids=0x7f0a0039;
         public static final int str_auction_is_closed=0x7f0a0045;
         public static final int str_auction_not_started=0x7f0a0044;
         public static final int str_auctions_count=0x7f0a003e;
-        public static final int str_aug=0x7f0a004e;
+        public static final int str_aug=0x7f0a004f;
         public static final int str_bid_value=0x7f0a003b;
+        public static final int str_bids_added_randomly=0x7f0a0047;
         public static final int str_bids_count=0x7f0a003f;
         public static final int str_cancel=0x7f0a0025;
         public static final int str_closed=0x7f0a0026;
         public static final int str_confirm=0x7f0a0024;
         public static final int str_confirm_password=0x7f0a0019;
-        public static final int str_dec=0x7f0a0052;
+        public static final int str_dec=0x7f0a0053;
         public static final int str_display_name=0x7f0a001d;
         public static final int str_exit_title=0x7f0a0022;
-        public static final int str_feb=0x7f0a0048;
+        public static final int str_feb=0x7f0a0049;
         public static final int str_first_name=0x7f0a001b;
         public static final int str_havent_account=0x7f0a001e;
         public static final int str_invalid_account=0x7f0a002f;
@@ -1967,27 +1968,27 @@ containing a value of this type.
         public static final int str_item_title=0x7f0a0029;
         /**  Start Month Names 
          */
-        public static final int str_jan=0x7f0a0047;
-        public static final int str_july=0x7f0a004d;
-        public static final int str_june=0x7f0a004c;
+        public static final int str_jan=0x7f0a0048;
+        public static final int str_july=0x7f0a004e;
+        public static final int str_june=0x7f0a004d;
         public static final int str_last_name=0x7f0a001c;
         public static final int str_loading=0x7f0a0037;
         public static final int str_logged_In_successfully=0x7f0a002e;
         public static final int str_logout=0x7f0a0043;
-        public static final int str_mar=0x7f0a0049;
-        public static final int str_may=0x7f0a004b;
+        public static final int str_mar=0x7f0a004a;
+        public static final int str_may=0x7f0a004c;
         public static final int str_no_auctions=0x7f0a0040;
         public static final int str_no_started_auctions=0x7f0a0042;
         public static final int str_no_up_coming_auctions=0x7f0a0041;
         public static final int str_not_started_yet=0x7f0a0027;
-        public static final int str_nov=0x7f0a0051;
-        public static final int str_oct=0x7f0a0050;
+        public static final int str_nov=0x7f0a0052;
+        public static final int str_oct=0x7f0a0051;
         public static final int str_owner=0x7f0a0038;
         public static final int str_passed_date=0x7f0a0046;
         public static final int str_password=0x7f0a0018;
         public static final int str_password_mismatch=0x7f0a001a;
         public static final int str_save=0x7f0a0033;
-        public static final int str_sep=0x7f0a004f;
+        public static final int str_sep=0x7f0a0050;
         public static final int str_show_all_bids=0x7f0a0016;
         public static final int str_sign_in=0x7f0a0014;
         public static final int str_sign_up=0x7f0a0017;
@@ -1999,13 +2000,13 @@ containing a value of this type.
         public static final int str_we_have=0x7f0a003d;
         public static final int str_welcome=0x7f0a0032;
         public static final int str_winner=0x7f0a0028;
-        public static final int title_activity_add_auction=0x7f0a0056;
-        public static final int title_activity_auction_details=0x7f0a0057;
+        public static final int title_activity_add_auction=0x7f0a0057;
+        public static final int title_activity_auction_details=0x7f0a0058;
         /**  END EVENTS SWIPE TITLES 
          */
-        public static final int title_activity_login=0x7f0a0053;
+        public static final int title_activity_login=0x7f0a0054;
         public static final int title_activity_main=0x7f0a0013;
-        public static final int title_activity_registeration=0x7f0a0054;
+        public static final int title_activity_registeration=0x7f0a0055;
     }
     public static final class style {
         /** 

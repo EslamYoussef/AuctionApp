@@ -48,6 +48,7 @@
             android:id="@+id/tvAuctionStartDate_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="@string/str_start_date_tap"
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tvAuctionStartDate_label"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:text="00:00"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/darker_gray" />

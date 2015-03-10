@@ -49,7 +49,7 @@
                     android:id="@+id/tvUsersCount_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/str_users_count"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/tvUsersCount_label"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:text="00:00"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/darker_gray" />
@@ -82,7 +82,7 @@
                     android:id="@+id/tvAuctionsCount_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/str_auctions_count"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/tvAuctionsCount_label"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:text="00"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/darker_gray" />
@@ -115,7 +115,7 @@
                     android:id="@+id/tvBidsCount_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/str_bids_count"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/tvBidsCount_label"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:text="00:00"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/darker_gray" />

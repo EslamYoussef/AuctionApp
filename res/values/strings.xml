@@ -56,6 +56,7 @@
     <string name="str_auction_not_started">Auction not started yet</string>
     <string name="str_auction_is_closed">Auction is closed</string>
     <string name="str_passed_date">Cannot select passed Date</string>
+    <string name="str_bids_added_randomly">Other users bids has been added randomly</string>
     <!-- Start Month Names -->
     <string name="str_jan">January</string>
     <string name="str_feb">Febrauary</string>

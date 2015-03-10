@@ -16,11 +16,10 @@ public class Utils {
 
 	public static ArrayList<Integer> getWelcomeImagesResourceList() {
 		ArrayList<Integer> welcomeImages = new ArrayList<Integer>();
-		welcomeImages.add(R.drawable.auc_2);
-		welcomeImages.add(R.drawable.auc_1);
+//		welcomeImages.add(R.drawable.auc_2);
+//		welcomeImages.add(R.drawable.auc_1);
 		welcomeImages.add(R.drawable.auc_3);
 		welcomeImages.add(R.drawable.auc_4);
-
 		return welcomeImages;
 	}
 
