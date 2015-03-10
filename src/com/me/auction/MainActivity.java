@@ -2,7 +2,10 @@ package com.me.auction;
 
 import java.util.ArrayList;
 
-import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,8 +13,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,8 +30,9 @@ import com.me.auction.fragments.StatisticsFragment;
 import com.me.auction.model.NavDrawerItem;
 import com.me.auction.model.NavImageViewItem;
 import com.me.auction.model.NavTextIconItem;
+import com.me.auction.utils.Utils;
 
-public class MainActivity extends FragmentActivity implements
+public class MainActivity extends ActionBarActivity implements
 		OnItemClickListener {
 	private DrawerLayout mDrawerLayout;
 	ActionBar mActionBar;
@@ -59,9 +66,6 @@ public class MainActivity extends FragmentActivity implements
 
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
-		// adding nav drawer items to array
-		// Katara Image View
-		navDrawerItems.add(new NavImageViewItem(R.drawable.ic_launcher));
 		// Menu Items
 		for (int i = 0; i < navMenuTitles.length; i++) {
 			navDrawerItems.add(new NavTextIconItem(navMenuTitles[i],
@@ -91,18 +95,11 @@ public class MainActivity extends FragmentActivity implements
 		mDrawerToggle.syncState();
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		// enabling action bar app icon and behaving it as toggle button
-		mActionBar = getActionBar();
+		mActionBar = getSupportActionBar();
 
 		mActionBar.setDisplayHomeAsUpEnabled(true);
 		mActionBar.setHomeButtonEnabled(true);
-
-	}
-
-	// You need to do the Play Services APK check here too.
-	@Override
-	protected void onResume() {
-		super.onResume();
-
+		displayView(0);
 	}
 
 	private void fillDrawerList() {
@@ -113,6 +110,11 @@ public class MainActivity extends FragmentActivity implements
 		mDrawerList.setAdapter(adapter);
 		mDrawerList.setOnItemClickListener(this);
 
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return mDrawerToggle.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -131,19 +133,19 @@ public class MainActivity extends FragmentActivity implements
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-		case 0:
 
-			break;
-		case 1:
+		case 0:
 			fragment = new AuctionsFragment();
 			break;
-		case 2:
+		case 1:
 			fragment = new StatisticsFragment();
-		case 3:
+			break;
+		case 2:
 			fragment = new ProfileFragment();
 			break;
-		case 4:
-			// TODO Show Logout Dialog
+		case 3:
+			showLogoutDialog();
+
 			break;
 
 		default:
@@ -153,9 +155,9 @@ public class MainActivity extends FragmentActivity implements
 		if (fragment != null) {
 			FragmentManager fragmentManager = (FragmentManager) getSupportFragmentManager();
 			FragmentTransaction ft = fragmentManager.beginTransaction();
-			// ft.addToBackStack(fragment.getTag());
-			ft.replace(R.id.frame_container, fragment).commit();
 
+			ft.replace(R.id.frame_container, fragment)
+					.commitAllowingStateLoss();
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
@@ -165,5 +167,36 @@ public class MainActivity extends FragmentActivity implements
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		mDrawerLayout.invalidate();
+		displayView(0);
+		super.onResume();
+
+	}
+
+	private void showLogoutDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.str_logout);
+		builder.setMessage(getResources().getString(R.string.str_are_you_sure));
+		builder.setPositiveButton(R.string.str_confirm, new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Utils.saveUserId(MainActivity.this, (long) 0);
+
+				// Start Welcome activity
+				startActivity(new Intent(MainActivity.this,
+						WelcomeActivity.class));
+				//
+				MainActivity.this.finish();
+
+			}
+		});
+		builder.setNegativeButton(R.string.str_cancel, null);
+		builder.setCancelable(true);
+		builder.create().show();
 	}
 }

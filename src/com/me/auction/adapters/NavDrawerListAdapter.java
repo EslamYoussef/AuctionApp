@@ -45,32 +45,19 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		if (null == convertView)
+			convertView = ((Activity) (mContext)).getLayoutInflater().inflate(
+					R.layout.cell_icon_text, parent, false);
+		IconTextCell iconTextCell = new IconTextCell();
+		iconTextCell.setIvImage((ImageView) convertView
+				.findViewById(R.id.ivImage));
+		iconTextCell
+				.setTvText((TextView) convertView.findViewById(R.id.tvText));
+		//
+		NavTextIconItem item = (NavTextIconItem) navDrawerItems.get(position);
+		iconTextCell.getIvImage().setImageResource(item.getIcon());
+		iconTextCell.getTvText().setText(item.getTitle());
 
-		if (position == 0) {
-			// Show Katara Logo Cell
-			convertView = ((Activity) (mContext)).getLayoutInflater().inflate(
-					R.layout.cell_image_view, null);
-			ImageCell imageCell = new ImageCell();
-			imageCell.setIvImage((ImageView) convertView
-					.findViewById(R.id.ivImage));
-			//
-			NavImageViewItem item = (NavImageViewItem) navDrawerItems
-					.get(position);
-			imageCell.getIvImage().setImageResource(item.getIcon());
-		} else {
-			convertView = ((Activity) (mContext)).getLayoutInflater().inflate(
-					R.layout.cell_icon_text, null);
-			IconTextCell iconTextCell = new IconTextCell();
-			iconTextCell.setIvImage((ImageView) convertView
-					.findViewById(R.id.ivImage));
-			iconTextCell.setTvText((TextView) convertView
-					.findViewById(R.id.tvText));
-			//
-			NavTextIconItem item = (NavTextIconItem) navDrawerItems
-					.get(position);
-			iconTextCell.getIvImage().setImageResource(item.getIcon());
-			iconTextCell.getTvText().setText(item.getTitle());
-		}
 		return convertView;
 	}
 

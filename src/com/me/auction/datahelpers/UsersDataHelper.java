@@ -1,5 +1,7 @@
 package com.me.auction.datahelpers;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -61,8 +63,45 @@ public class UsersDataHelper extends SQLiteOpenHelper {
 		return id;
 	}
 
+	public ArrayList<User> getAllUsers() {
+
+		ArrayList<User> usersList = null;
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.query(Constants.TABLE_USERS, null, null, null, null,
+				null, null);
+		if (cursor.getCount() > 0) {
+			usersList = new ArrayList<User>();
+
+			cursor.moveToFirst();
+			do {
+				User user = new User();
+				user.setId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_ID)));
+				user.setfName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_FIRST_NAME)));
+				user.setlName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_LAST_NAME)));
+				user.setDisplayName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_DISPLAY_NAME)));
+				user.setPassword(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_PASSWORD)));
+				usersList.add(user);
+			} while (cursor.moveToNext());
+
+		}
+		return usersList;
+	}
+
+	public int getUsersCount() {
+
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.query(Constants.TABLE_USERS, null, null, null, null,
+				null, null);
+		return cursor.getCount();
+	}
+
 	public User getUserWithId(Long userId) {
-		User user = new User();
+		User user = null;
 		SQLiteDatabase db = getWritableDatabase();
 		Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_USERS
 				+ " where " + Constants.KEY_ID + " = ?",
@@ -70,6 +109,7 @@ public class UsersDataHelper extends SQLiteOpenHelper {
 		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
 			do {
+				user = new User();
 				user.setId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_ID)));
 				user.setfName(cursor.getString(cursor
@@ -89,8 +129,8 @@ public class UsersDataHelper extends SQLiteOpenHelper {
 		User user = new User();
 		SQLiteDatabase db = getWritableDatabase();
 		String queryStr = "select * from " + Constants.TABLE_USERS + " where "
-				+ Constants.KEY_DISPLAY_NAME + " = " + userName + " AND "
-				+ Constants.KEY_PASSWORD + " = " + password;
+				+ Constants.KEY_DISPLAY_NAME + "=\"" + userName + "\" AND "
+				+ Constants.KEY_PASSWORD + "=\"" + password + "\"";
 		Cursor cursor = db.rawQuery(queryStr, null);
 		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();

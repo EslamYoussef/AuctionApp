@@ -1,20 +1,21 @@
 package com.me.auction;
 
-import com.me.auction.model.User;
-import com.me.auction.presenters.UserPresenter;
-import com.me.auction.utils.Utils;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterationActivity extends Activity {
+import com.me.auction.model.User;
+import com.me.auction.presenters.UserPresenter;
+import com.me.auction.utils.Utils;
+
+public class RegisterationActivity extends ActionBarActivity {
 
 	EditText etFirstName, etLastName, etDisplayName, etPassword,
 			etConfirmPassword;
@@ -28,9 +29,9 @@ public class RegisterationActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registeration);
-		getActionBar().setTitle(R.string.title_activity_registeration);
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle(R.string.title_activity_registeration);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 		mUserPresenter = new UserPresenter(this);
@@ -113,6 +114,7 @@ public class RegisterationActivity extends Activity {
 			startMainActivity();
 			// Close Welcome Activity
 			setResult(RESULT_OK);
+			finish();
 		} else {
 			Toast.makeText(this, R.string.error_sign_up_failed,
 					Toast.LENGTH_SHORT).show();

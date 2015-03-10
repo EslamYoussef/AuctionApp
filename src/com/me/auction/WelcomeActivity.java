@@ -55,6 +55,7 @@ public class WelcomeActivity extends FragmentActivity {
 			welcomeImagesList = Utils.getWelcomeImagesResourceList();
 
 			loadSwipeFragments(0);
+			
 		}
 	}
 
@@ -101,7 +102,7 @@ public class WelcomeActivity extends FragmentActivity {
 		@Override
 		public int getCount() {
 
-			return 5;
+			return welcomeImagesList.size();
 		}
 	}
 

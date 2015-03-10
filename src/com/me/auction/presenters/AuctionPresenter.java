@@ -20,6 +20,10 @@ public class AuctionPresenter {
 		return mAuctionsDataHelper.createAuction(auction);
 	}
 
+	public Integer getAuctionsCount() {
+		return mAuctionsDataHelper.getAuctionsCount();
+	}
+
 	public Auction getAuctionWithId(Long auctionId) {
 
 		return mAuctionsDataHelper.getAuctionWithId(auctionId);
@@ -42,7 +46,7 @@ public class AuctionPresenter {
 
 	public long updateUser(Auction auction) {
 
-		return mAuctionsDataHelper.updateUser(auction);
+		return mAuctionsDataHelper.updateAuction(auction);
 	}
 
 	public ArrayList<Auction> getHapeeningNowAuctions() {

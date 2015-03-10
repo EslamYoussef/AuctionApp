@@ -59,6 +59,8 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 		values.put(Constants.KEY_DURATION, auction.getDurationInHours());
 		values.put(Constants.KEY_OWNER_ID, auction.getItemOwnerId());
 		values.put(Constants.KEY_OWNER_USER_NAME, auction.getItemOwnerName());
+		values.put(Constants.KEY_IS_CLOSED, auction.getIsClosed());
+		values.put(Constants.KEY_WINNER__USER_ID, auction.getWinnerUserId());
 
 		try {
 			id = db.insert(Constants.TABLE_AUCTIONS, null, values);
@@ -93,6 +95,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 			} while (cursor.moveToNext());
 		}
 		return auction;
@@ -120,6 +128,56 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
+				auctionsList.add(auction);
+			} while (cursor.moveToNext());
+		}
+		return auctionsList;
+	}
+
+	public int getAuctionsCount() {
+		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
+
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.query(Constants.TABLE_AUCTIONS, null, null, null,
+				null, null, null);
+		return cursor.getCount();
+	}
+
+	public ArrayList<Auction> getHapeeningNowAuctions() {
+		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
+		Long nowDateInMilis = Calendar.getInstance().getTimeInMillis();
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_AUCTIONS
+				+ " where " + Constants.KEY_START_DATE + " < ?",
+				new String[] { nowDateInMilis.toString() });
+		if (cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			do {
+				Auction auction = new Auction();
+				auction.setId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_ID)));
+				auction.setItemTitle(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_ITEM_TITLE)));
+				auction.setItemDescription(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_ITEM_DESCRIPTION)));
+				auction.setStartDate(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_START_DATE)));
+				auction.setDurationInHours(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_DURATION)));
+				auction.setItemOwnerId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				auctionsList.add(auction);
 			} while (cursor.moveToNext());
 		}
@@ -149,6 +207,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				auctionsList.add(auction);
 			} while (cursor.moveToNext());
 		}
@@ -176,6 +240,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				// Get Bids for current "Auction"
 				BidsDataHelper bidDataHelper = new BidsDataHelper(mContext);
 				auction.setBidsList(bidDataHelper
@@ -185,7 +255,7 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 		return auction;
 	}
 
-	public long updateUser(Auction auction) {
+	public long updateAuction(Auction auction) {
 		long id = 0;
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -194,6 +264,9 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 		values.put(Constants.KEY_START_DATE, auction.getStartDate());
 		values.put(Constants.KEY_DURATION, auction.getDurationInHours());
 		values.put(Constants.KEY_OWNER_ID, auction.getItemOwnerId());
+		values.put(Constants.KEY_OWNER_USER_NAME, auction.getItemOwnerName());
+		values.put(Constants.KEY_IS_CLOSED, auction.getIsClosed());
+		values.put(Constants.KEY_WINNER__USER_ID, auction.getWinnerUserId());
 
 		try {
 			id = db.update(Constants.TABLE_AUCTIONS, values, Constants.KEY_ID
@@ -207,35 +280,6 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 		}
 
 		return id;
-	}
-
-	public ArrayList<Auction> getHapeeningNowAuctions() {
-		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
-		Long nowDateInMilis = Calendar.getInstance().getTimeInMillis();
-		SQLiteDatabase db = getWritableDatabase();
-		Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_AUCTIONS
-				+ " where " + Constants.KEY_START_DATE + " < ?",
-				new String[] { nowDateInMilis.toString() });
-		if (cursor.getCount() > 0) {
-			cursor.moveToFirst();
-			do {
-				Auction auction = new Auction();
-				auction.setId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_ID)));
-				auction.setItemTitle(cursor.getString(cursor
-						.getColumnIndex(Constants.KEY_ITEM_TITLE)));
-				auction.setItemDescription(cursor.getString(cursor
-						.getColumnIndex(Constants.KEY_ITEM_DESCRIPTION)));
-				auction.setStartDate(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_START_DATE)));
-				auction.setDurationInHours(cursor.getInt(cursor
-						.getColumnIndex(Constants.KEY_DURATION)));
-				auction.setItemOwnerId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_OWNER_ID)));
-				auctionsList.add(auction);
-			} while (cursor.moveToNext());
-		}
-		return auctionsList;
 	}
 
 	public ArrayList<Auction> getUserAuctions(Long userId) {
@@ -261,6 +305,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				auctionsList.add(auction);
 			} while (cursor.moveToNext());
 		}
@@ -290,6 +340,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				auctionsList.add(auction);
 			} while (cursor.moveToNext());
 		}
@@ -322,6 +378,12 @@ public class AuctionsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_DURATION)));
 				auction.setItemOwnerId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_OWNER_ID)));
+				auction.setItemOwnerName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_OWNER_USER_NAME)));
+				auction.setIsClosed(cursor.getInt(cursor
+						.getColumnIndex(Constants.KEY_IS_CLOSED)));
+				auction.setWinnerUserId(cursor.getLong(cursor
+						.getColumnIndex(Constants.KEY_WINNER__USER_ID)));
 				auctionsList.add(auction);
 			} while (cursor.moveToNext());
 		}

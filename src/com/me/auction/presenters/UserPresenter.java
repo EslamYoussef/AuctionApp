@@ -1,9 +1,14 @@
 package com.me.auction.presenters;
 
+import java.util.ArrayList;
+
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.me.auction.datahelpers.UsersDataHelper;
 import com.me.auction.model.User;
+import com.me.auction.utils.Constants;
 
 public class UserPresenter {
 	UsersDataHelper mUsersDataHelper;
@@ -17,6 +22,15 @@ public class UserPresenter {
 
 	public long register(User user) {
 		return mUsersDataHelper.createUser(user);
+	}
+
+	public ArrayList<User> getAllUsers() {
+		return mUsersDataHelper.getAllUsers();
+	}
+
+	public Integer getUsersCount() {
+
+		return mUsersDataHelper.getUsersCount();
 	}
 
 	public User getUserWithId(Long userId) {

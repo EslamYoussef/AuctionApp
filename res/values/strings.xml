@@ -16,24 +16,46 @@
     <string name="str_last_name">Last Name</string>
     <string name="str_display_name">Display Name</string>
     <string name="str_havent_account">Don\'t have an account yet?</string>
+    <string name="str_started_auctions">Started Auctions</string>
+    <string name="str_upcoming_auctions">Upcoming Auctions</string>
     <string name="str_already_signed">Already Signed Up?</string>
     <string name="str_exit_title">"Leave the Page"</string>
     <string name="str_are_you_sure">Are you sure?</string>
     <string name="str_confirm">OK</string>
     <string name="str_cancel">Cancel</string>
     <string name="str_closed">Closed</string>
+    <string name="str_not_started_yet">Not Started Yet</string>
     <string name="str_winner">Winner</string>
-    <string name="str_item_title">Item Title</string>
-    <string name="str_item_description">Item Description</string>
-    <string name="str_start_date">Start Date</string>
+    <string name="str_item_title">Item Title :</string>
+    <string name="str_item_description">Item Description :</string>
+    <string name="str_item_owner">Item Owner :</string>
+    <string name="str_start_date">Start Date :</string>
+    <string name="str_start_date_tap">Start Date :(Tap to change)</string>
     <string name="str_logged_In_successfully">Logged in successfully</string>
     <string name="str_invalid_account">Invalid account</string>
+    <string name="str_invalid_value">Invalid value</string>
     <string name="error_sign_up_failed">An error occured during sign up process</string>
     <string name="str_welcome">Welcome </string>
     <string name="str_save">Save</string>
+    <string name="str_add_auction">New Auction</string>
     <string name="str_added_successfully">Added Successfully</string>
     <string name="str_auction_added_failure">An error occured during adding operation</string>
     <string name="str_loading">Loading...</string>
+    <string name="str_owner">Owner</string>
+    <string name="str_auction_bids">Auction Bids ($):</string>
+    <string name="str_add_dolar_bid_value"> Bid Value ($):</string>
+    <string name="str_bid_value">Bid Value ($):</string>
+    <string name="str_users_count">Users Count</string>
+    <string name="str_we_have">We Have :</string>
+    <string name="str_auctions_count">Auctions Count </string>
+    <string name="str_bids_count">Bids Count</string>
+    <string name="str_no_auctions">No Auctions</string>
+    <string name="str_no_up_coming_auctions">No Upcoming Auctions</string>
+    <string name="str_no_started_auctions">No started Auctions</string>
+    <string name="str_logout">Logout</string>
+    <string name="str_auction_not_started">Auction not started yet</string>
+    <string name="str_auction_is_closed">Auction is closed</string>
+    <string name="str_passed_date">Cannot select passed Date</string>
     <!-- Start Month Names -->
     <string name="str_jan">January</string>
     <string name="str_feb">Febrauary</string>
@@ -65,10 +87,10 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/auction_icon</item>
+        <item>@drawable/stat_icon</item>
+        <item>@drawable/profile</item>
+        <item>@drawable/logout</item>
     </array>
     <!-- End Month Names -->
     <!-- EVENTS SWIPE TITLES -->
@@ -77,7 +99,6 @@
         <!-- Nav Drawer Menu Items -->
         <item>"All"</item>
         <item>Won Auctions</item>
-        <item>Age Group</item>
         <item>My Auctions</item>
     </string-array>
     <!-- END EVENTS SWIPE TITLES -->

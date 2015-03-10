@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.me.auction.model.Auction;
 import com.me.auction.model.Bid;
 import com.me.auction.utils.Constants;
 
@@ -54,6 +56,7 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 		values.put(Constants.KEY_AUCTION_ID, bid.getAuctionId());
 		values.put(Constants.KEY_IS_WON, bid.getIsWon());
 		values.put(Constants.KEY_BID_VALUE, bid.getBidValue());
+		values.put(Constants.KEY_USER_NAME, bid.getUserName());
 
 		try {
 			id = db.insert(Constants.TABLE_BIDS, null, values);
@@ -104,12 +107,12 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_ID)));
 				bid.setAuctionId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_AUCTION_ID)));
-				bid.setAuctionId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setUserId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_BID_DATE)));
+						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setBidDate(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_AUCTION_ID)));
+						.getColumnIndex(Constants.KEY_BID_DATE)));
+				bid.setUserName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_USER_NAME)));
 				bid.setBidValue(cursor.getInt(cursor
 						.getColumnIndex(Constants.KEY_BID_VALUE)));
 				bid.setIsWon(cursor.getInt(cursor
@@ -135,17 +138,16 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_ID)));
 				bid.setAuctionId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_AUCTION_ID)));
-				bid.setAuctionId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setUserId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_BID_DATE)));
+						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setBidDate(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_AUCTION_ID)));
+						.getColumnIndex(Constants.KEY_BID_DATE)));
+				bid.setUserName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_USER_NAME)));
 				bid.setBidValue(cursor.getInt(cursor
 						.getColumnIndex(Constants.KEY_BID_VALUE)));
 				bid.setIsWon(cursor.getInt(cursor
 						.getColumnIndex(Constants.KEY_IS_WON)));
-
 			} while (cursor.moveToNext());
 		}
 		return bid;
@@ -165,12 +167,12 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_ID)));
 				bid.setAuctionId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_AUCTION_ID)));
-				bid.setAuctionId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setUserId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_BID_DATE)));
+						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setBidDate(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_AUCTION_ID)));
+						.getColumnIndex(Constants.KEY_BID_DATE)));
+				bid.setUserName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_USER_NAME)));
 				bid.setBidValue(cursor.getInt(cursor
 						.getColumnIndex(Constants.KEY_BID_VALUE)));
 				bid.setIsWon(cursor.getInt(cursor
@@ -180,6 +182,14 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 			} while (cursor.moveToNext());
 		}
 		return bidsList;
+	}
+
+	public int getBidssCount() {
+
+		SQLiteDatabase db = getWritableDatabase();
+		Cursor cursor = db.query(Constants.TABLE_BIDS, null, null, null, null,
+				null, null);
+		return cursor.getCount();
 	}
 
 	public ArrayList<Bid> getBidsListForAuction(Long auctionId) {
@@ -197,12 +207,12 @@ public class BidsDataHelper extends SQLiteOpenHelper {
 						.getColumnIndex(Constants.KEY_ID)));
 				bid.setAuctionId(cursor.getLong(cursor
 						.getColumnIndex(Constants.KEY_AUCTION_ID)));
-				bid.setAuctionId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setUserId(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_BID_DATE)));
+						.getColumnIndex(Constants.KEY_USER_ID)));
 				bid.setBidDate(cursor.getLong(cursor
-						.getColumnIndex(Constants.KEY_AUCTION_ID)));
+						.getColumnIndex(Constants.KEY_BID_DATE)));
+				bid.setUserName(cursor.getString(cursor
+						.getColumnIndex(Constants.KEY_USER_NAME)));
 				bid.setBidValue(cursor.getInt(cursor
 						.getColumnIndex(Constants.KEY_BID_VALUE)));
 				bid.setIsWon(cursor.getInt(cursor

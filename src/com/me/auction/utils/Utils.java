@@ -9,16 +9,18 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 
 import com.me.auction.R;
+import com.me.auction.model.User;
+import com.me.auction.presenters.UserPresenter;
 
 public class Utils {
 
 	public static ArrayList<Integer> getWelcomeImagesResourceList() {
 		ArrayList<Integer> welcomeImages = new ArrayList<Integer>();
-		welcomeImages.add(R.drawable.ic_launcher);
-		welcomeImages.add(R.drawable.ic_launcher);
-		welcomeImages.add(R.drawable.ic_launcher);
-		welcomeImages.add(R.drawable.ic_launcher);
-		welcomeImages.add(R.drawable.ic_launcher);
+		welcomeImages.add(R.drawable.auc_2);
+		welcomeImages.add(R.drawable.auc_1);
+		welcomeImages.add(R.drawable.auc_3);
+		welcomeImages.add(R.drawable.auc_4);
+
 		return welcomeImages;
 	}
 
@@ -36,6 +38,12 @@ public class Utils {
 		editor.putLong(Constants.KEY_USER_ID, userId);
 		editor.commit();
 
+	}
+
+	public static User getCurrentUser(Context context) {
+
+		UserPresenter presenter = new UserPresenter(context);
+		return presenter.getUserWithId(getSavedUserId(context));
 	}
 
 	public static String getStringMonth(Context context, Calendar calender) {
@@ -103,16 +111,17 @@ public class Utils {
 			return "";
 		}
 	}
+
 	public static int randInt(int min, int max) {
 
-	    // NOTE: Usually this should be a field rather than a method
-	    // variable so that it is not re-seeded every call.
-	    Random rand = new Random();
+		// NOTE: Usually this should be a field rather than a method
+		// variable so that it is not re-seeded every call.
+		Random rand = new Random();
 
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
-	    int randomNum = rand.nextInt((max - min) + 1) + min;
+		// nextInt is normally exclusive of the top value,
+		// so add 1 to make it inclusive
+		int randomNum = rand.nextInt((max - min) + 1) + min;
 
-	    return randomNum;
+		return randomNum;
 	}
 }

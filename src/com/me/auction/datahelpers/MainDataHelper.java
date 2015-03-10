@@ -33,31 +33,61 @@ public class MainDataHelper extends SQLiteOpenHelper {
 	}
 
 	private void fillInitialData() {
-		// Create User
+		// Create 2 Dummy User
 		User user = new User();
 		user.setfName("Eslam");
-		user.setlName("Eslam");
-		user.setDisplayName("Eslam");
+		user.setlName("Youssef");
+		user.setDisplayName("EslamYoussef");
 		user.setPassword("12345");
 		UserPresenter mPresnter = new UserPresenter(mContext);
 		Long id = mPresnter.register(user);
-		// Create Auction
+		//
+		User user2 = new User();
+		user2.setfName("John");
+		user2.setlName("Marc");
+		user2.setDisplayName("JohnMarc");
+		user2.setPassword("54321");
+		mPresnter = new UserPresenter(mContext);
+		Long id2 = mPresnter.register(user2);
+		// Create 3 Auction
 		Auction auction = new Auction();
 		auction.setIsClosed(0);
-		auction.setItemDescription("Description");
+		auction.setItemDescription("The Auction Description");
 		auction.setItemOwnerId((long) 1);
-		auction.setItemOwnerName("Eslam");
-		auction.setItemTitle("Item 1");
+		auction.setItemOwnerName("EslamYoussef");
+		auction.setItemTitle("My Old Fashioned Car");
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.MONTH, 5);
 		auction.setStartDate(cal.getTimeInMillis());
 		auction.setDurationInHours(2);
 		AuctionPresenter mAuctionPresnter = new AuctionPresenter(mContext);
 		Long auctionId = mAuctionPresnter.createAuction(auction);
-		ArrayList<Auction> auctionsList = mAuctionPresnter.getAllAuctions();
-		auctionsList = mAuctionPresnter.getHapeeningNowAuctions();
-		auctionsList = mAuctionPresnter.getUpComingAuctions();
-		auctionsList = mAuctionPresnter.getUserAuctions((long) 1);
+		//
+		Auction auction2 = new Auction();
+		auction2.setIsClosed(0);
+		auction2.setItemDescription("The Second Auction Description");
+		auction2.setItemOwnerId((long) 2);
+		auction2.setItemOwnerName("JohnMarc");
+		auction2.setItemTitle("My Beautiful Old House");
+		Calendar cal2 = Calendar.getInstance();
+
+		auction2.setStartDate(cal2.getTimeInMillis());
+		auction2.setDurationInHours(2);
+		mAuctionPresnter = new AuctionPresenter(mContext);
+		Long auctionId2 = mAuctionPresnter.createAuction(auction2);
+		//
+		Auction auction3 = new Auction();
+		auction3.setIsClosed(1);
+		auction3.setItemDescription("The Third Auction Description");
+		auction3.setItemOwnerId((long) 2);
+		auction3.setItemOwnerName("JohnMarc");
+		auction3.setItemTitle("My Old Laptop");
+		Calendar cal3 = Calendar.getInstance();
+		cal3.set(Calendar.MONTH, 1);
+		auction3.setStartDate(cal3.getTimeInMillis());
+		auction3.setDurationInHours(2);
+		mAuctionPresnter = new AuctionPresenter(mContext);
+		Long auctionId3 = mAuctionPresnter.createAuction(auction3);
 	}
 
 	@Override

@@ -38,6 +38,7 @@
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
+        android:id="@+id/rlAuctionStartDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view5"
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="@string/str_start_date"
+            android:text="@string/str_start_date_tap"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView

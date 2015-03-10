@@ -9,9 +9,10 @@ public class Auction {
 	private String itemDescription;
 	private Long startDate;
 	private Long itemOwnerId;
+
 	private String itemOwnerName;
 	private Integer durationInHours;
-	private Integer winnerUserId;
+	private Long winnerUserId;
 	private Integer isClosed;
 	private ArrayList<Bid> bidsList;
 
@@ -71,11 +72,11 @@ public class Auction {
 		this.bidsList = bidsList;
 	}
 
-	public Integer getWinnerUserId() {
+	public Long getWinnerUserId() {
 		return winnerUserId;
 	}
 
-	public void setWinnerUserId(Integer winnerUserId) {
+	public void setWinnerUserId(Long winnerUserId) {
 		this.winnerUserId = winnerUserId;
 	}
 
@@ -94,4 +95,5 @@ public class Auction {
 	public void setItemOwnerName(String itemOwnerName) {
 		this.itemOwnerName = itemOwnerName;
 	}
+
 }

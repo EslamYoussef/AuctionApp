@@ -1,41 +1,60 @@
 package com.me.auction;
 
-import com.me.auction.model.Auction;
-import com.me.auction.presenters.AuctionPresenter;
-import com.me.auction.utils.Constants;
+import java.util.Calendar;
 
-import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddAuctionActivity extends Activity {
+import com.me.auction.model.Auction;
+import com.me.auction.model.User;
+import com.me.auction.presenters.AuctionPresenter;
+import com.me.auction.utils.Utils;
+
+public class AddAuctionActivity extends ActionBarActivity implements
+		OnClickListener, OnDateSetListener {
 	EditText etItemTitle, etItemDescription;
 	TextView tvStartDate;
 	Long startDate, mOwnerId;
 	String mItemTitlestr = "", mItemDescription = "", mUserName = "";
 	Auction mNewAuction;
 	AuctionPresenter mAuctionPresenter;
+	User mUser;
+	RelativeLayout rlAuctionStartDate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_auction);
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle(R.string.title_activity_add_auction);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle(R.string.title_activity_add_auction);
+		mAuctionPresenter = new AuctionPresenter(this);
+		mUser = Utils.getCurrentUser(this);
 		// Receive Date
-		Bundle extras = getIntent().getExtras();
-		if (null != extras) {
-			mOwnerId = extras.getLong(Constants.KEY_OWNER_ID);
-			mUserName = extras.getString(Constants.KEY_USER_NAME);
+
+		if (null != mUser) {
+			mOwnerId = mUser.getId();
+			mUserName = mUser.getDisplayName();
 		}
 		etItemTitle = (EditText) findViewById(R.id.etItemTitle);
 		etItemDescription = (EditText) findViewById(R.id.etItemDescription);
 		tvStartDate = (TextView) findViewById(R.id.tvAuctionStartDate);
+		rlAuctionStartDate = (RelativeLayout) findViewById(R.id.rlAuctionStartDate);
+		rlAuctionStartDate.setOnClickListener(this);
+		// Show Now Date
+		startDate = Calendar.getInstance().getTimeInMillis();
+		tvStartDate.setText(Utils.getDateStringfromDate(this, startDate));
 	}
 
 	@Override
@@ -70,6 +89,8 @@ public class AddAuctionActivity extends Activity {
 			mNewAuction.setStartDate(startDate);
 			mNewAuction.setItemOwnerId(mOwnerId);
 			mNewAuction.setItemOwnerName(mUserName);
+			mNewAuction.setIsClosed(0);
+			mNewAuction.setDurationInHours(4);
 			// Add New Auction
 			Long auctionId = mAuctionPresenter.createAuction(mNewAuction);
 			if (auctionId > 0) {
@@ -86,5 +107,38 @@ public class AddAuctionActivity extends Activity {
 			finish();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		Calendar calender = Calendar.getInstance();
+		calender.setTimeInMillis(startDate);
+		int year = calender.get(Calendar.YEAR);
+		int month = calender.get(Calendar.MONTH);
+		int day = calender.get(Calendar.DAY_OF_MONTH);
+
+		DatePickerDialog dpdFromDate = new DatePickerDialog(this, this, year,
+				month, day);
+		dpdFromDate.show();
+
+	}
+
+	@Override
+	public void onDateSet(DatePicker view, int year, int monthOfYear,
+			int dayOfMonth) {
+		Calendar cal = Calendar.getInstance();
+		Long now = cal.getTimeInMillis();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, monthOfYear);
+		cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+		Long selectedDate = cal.getTimeInMillis();
+		if (selectedDate < now) {
+			Toast.makeText(this, R.string.str_passed_date, Toast.LENGTH_LONG)
+					.show();
+		} else {
+			startDate = selectedDate;
+			tvStartDate.setText(Utils.getDateStringfromDate(this, startDate));
+		}
+
 	}
 }

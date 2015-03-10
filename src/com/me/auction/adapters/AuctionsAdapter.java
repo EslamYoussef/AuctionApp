@@ -36,9 +36,11 @@ public class AuctionsAdapter extends ArrayAdapter<Auction> {
 			mAuctionCell.setTvItemDescription((TextView) convertView
 					.findViewById(R.id.tvItemDescription));
 			mAuctionCell.setTvStartDate((TextView) convertView
-					.findViewById(R.id.tvItemOwner));
+					.findViewById(R.id.tvStartDate));
 			mAuctionCell.setTvIsClosed((TextView) convertView
 					.findViewById(R.id.tvIsClosed));
+			mAuctionCell.setTvOwnerName((TextView) convertView
+					.findViewById(R.id.tvItemOwner));
 			convertView.setTag(mAuctionCell);
 
 		} else {

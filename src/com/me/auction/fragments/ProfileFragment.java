@@ -1,32 +1,36 @@
 package com.me.auction.fragments;
 
-import com.me.auction.R;
-
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.me.auction.R;
+import com.me.auction.model.User;
+import com.me.auction.utils.Utils;
 
 public class ProfileFragment extends Fragment {
 
-	ImageView ivImage;
-	Drawable mImageResource;
-
-	public void setImage(Drawable imageRes) {
-		this.mImageResource = imageRes;
-	}
+	User mUser;
+	TextView tvDisplayName, tvFirstName, tvLastName;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_image, container,
+		View rootView = inflater.inflate(R.layout.fragment_profile, container,
 				false);
-		ivImage = (ImageView) rootView.findViewById(R.id.ivImage);
-		if (null != mImageResource)
-			ivImage.setImageDrawable(mImageResource);
+		tvDisplayName = (TextView) rootView.findViewById(R.id.tvDisplayName);
+		tvFirstName = (TextView) rootView.findViewById(R.id.tvFirstName);
+		tvLastName = (TextView) rootView.findViewById(R.id.tvLastName);
+		// get current user
+		mUser = Utils.getCurrentUser(getActivity());
+		if (null != mUser) {
+			tvDisplayName.setText(mUser.getDisplayName());
+			tvFirstName.setText(mUser.getfName());
+			tvLastName.setText(mUser.getlName());
+		}
 		return rootView;
 	}
 }

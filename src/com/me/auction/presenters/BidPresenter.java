@@ -28,6 +28,11 @@ public class BidPresenter {
 		return mBidsDataHelper.updateUserBid(bid);
 	}
 
+	public Integer getBidssCount() {
+
+		return mBidsDataHelper.getBidssCount();
+	}
+
 	public Bid getBidWithId(Long bidId) {
 		return mBidsDataHelper.getBidWithId(bidId);
 	}

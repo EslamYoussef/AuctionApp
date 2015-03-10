@@ -48,7 +48,7 @@ public class BidsAdapter extends ArrayAdapter<Bid> {
 		}
 		Bid currentBid = mBidsList.get(position);
 		mBidCell.getTvUserName().setText(currentBid.getUserName());
-		mBidCell.getTvBidValue().setText(currentBid.getBidValue());
+		mBidCell.getTvBidValue().setText(currentBid.getBidValue().toString());
 
 		String dateStr = Utils.getDateStringfromDate(mContext,
 				currentBid.getBidDate());

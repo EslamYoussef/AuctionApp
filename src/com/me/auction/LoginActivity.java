@@ -1,11 +1,12 @@
 package com.me.auction;
 
-import android.app.Activity;
+import java.util.ArrayList;
+
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,21 +18,23 @@ import com.me.auction.presenters.UserPresenter;
 import com.me.auction.utils.Constants;
 import com.me.auction.utils.Utils;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends ActionBarActivity {
 
 	EditText etUserName, etPassword;
 	String mUserNameStr = "", mPasswordStr = "";
 	User mNewUser;
+
 	UserPresenter mUserPresenter;
+	ArrayList<User> mUsersList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle(R.string.title_activity_login);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle(R.string.title_activity_login);
 		this.getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
@@ -63,9 +66,20 @@ public class LoginActivity extends Activity {
 			etPassword.setError(getString(R.string.error_required_field));
 			return;
 		}
-		mNewUser = mUserPresenter.getUserForUserNameAndPassword(mUserNameStr,
-				mPasswordStr);
-		if (null != mNewUser && mNewUser.getId() > 0) {
+		mUsersList = mUserPresenter.getAllUsers();
+		boolean isFound = false;
+		if (null != mUsersList && mUsersList.size() > 0) {
+			for (User user : mUsersList) {
+				if (user.getDisplayName().equalsIgnoreCase(mUserNameStr)
+						&& user.getPassword().equalsIgnoreCase(mPasswordStr)) {
+					mNewUser = user;
+					isFound = true;
+					break;
+				}
+			}
+		}
+
+		if (isFound && null != mNewUser && mNewUser.getId() > 0) {
 			// Say welcome
 			Toast.makeText(
 					this,
@@ -78,6 +92,7 @@ public class LoginActivity extends Activity {
 			openMainActivity();
 			// Close Welcome Activity
 			setResult(RESULT_OK);
+			finish();
 		} else {
 			Toast.makeText(this, R.string.str_invalid_account,
 					Toast.LENGTH_SHORT).show();

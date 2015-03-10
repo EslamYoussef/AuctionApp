@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="19"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
 
     <application
         android:name=".AuctionApplication"
@@ -25,18 +25,27 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AddAuctionActivity"
-            android:label="@string/title_activity_add_auction" >
+            android:label="@string/title_activity_add_auction"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AuctionDetailsActivity"
-            android:label="@string/title_activity_auction_details" >
+            android:label="@string/title_activity_auction_details"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="LoginActivity"></activity>
-        <activity android:name="RegisterationActivity"></activity>
+        <activity
+            android:name="LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="RegisterationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
